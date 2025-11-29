@@ -1,4 +1,4 @@
-name: This workflow will get file from runner machine and upload to Github repo as artifact
+name: Main2.yml
 on: 
  push:
   branches:

@@ -18,8 +18,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with: 
          name: GHA_Artifact
-         path: |
-          GHA_Artifact_Dir/                             # Upload the entire directory
+         path: GHA_Artifact_Dir/                             # Upload the entire directory
       - name: Verify the Artifact upload
         run: |
           echo "Artifact uploaded successfully. Please check the 'Actions' tab in your Github repository to verify the uploaded artifact."

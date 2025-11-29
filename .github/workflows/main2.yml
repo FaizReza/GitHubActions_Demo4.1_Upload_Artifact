@@ -2,8 +2,8 @@ name: This workflow will get file from runner machine and upload to Github repo 
 on: 
  push:
   branches:
-   - master
- workflow_dispatch:
+   - main
+ # workflow_dispatch:
 jobs: 
   buildJob:
     runs-on: ubuntu-latest 

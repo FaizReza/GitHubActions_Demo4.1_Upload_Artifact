@@ -10,16 +10,18 @@ jobs:
       - name: Create a Directory
         run: mkdir GHA_Artifact_Dir
       - name: Create a File inside the Directory
-        run: echo "This is a demo file for Github Actions Artifact upload" > GHA_Artifact_Dir/test.json
-      - name: verify the contents of the file   
-        run: cat GHA_Artifact_Dir/test.json
-      - name: create 2nd file
-        run: echo "Donot upload this file" > GHA_Artifact_Dir/secret_dont_upload.txt
+        run: |
+          echo "This is a demo file for Github Actions Artifact upload" > GHA_Artifact_Dir/test.json
+          cat GHA_Artifact_Dir/test.json
+          echo "Donot upload this file" > GHA_Artifact_Dir/secret_dont_upload.txt
       - name: Upload the file to Github Repo as Artifact
         uses: actions/upload-artifact@v4
         with: 
          name: GHA_Artifact
-         path: GHA_Artifact_Dir/                             # Upload the entire directory
+         path: |
+          GHA_Artifact_Dir/                             # Upload the entire directory
+          # GHA_Artifact_Dir/test.json                  # Or you can specify a single file to upload
+          # !GHA_Artifact_Dir/secret_dont_upload.txt    # Exclude specific file from upload
       - name: Verify the Artifact upload
         run: |
           echo "Artifact uploaded successfully. Please check the 'Actions' tab in your Github repository to verify the uploaded artifact."

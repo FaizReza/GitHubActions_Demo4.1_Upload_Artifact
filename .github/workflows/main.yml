@@ -20,7 +20,7 @@ jobs:
          name: GHA_Artifact
          path: |
           GHA_Artifact_Dir/test.json                  # Or you can specify a single file to upload
-          !GHA_Artifact_Dir/secret_dont_upload.txt    # Exclude specific file from upload
+          GHA_Artifact_Dir/secret_dont_upload.txt    # Exclude specific file from upload
       - name: Verify the Artifact upload
         run: |
           echo "Artifact uploaded successfully. Please check the 'Actions' tab in your Github repository to verify the uploaded artifact."

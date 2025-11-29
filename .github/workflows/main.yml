@@ -2,7 +2,7 @@ name: This workflow will get file from runner machine and upload to Github repo 
 on: 
  push:
   branches:
-   - master
+   - main
 jobs: 
   buildJob:
     runs-on: ubuntu-latest 
@@ -10,10 +10,11 @@ jobs:
       - name: Create a Directory
         run: mkdir GHA_Artifact_Dir
       - name: Create a File inside the Directory
-        run: |
-          echo "This is a demo file for Github Actions Artifact upload" > GHA_Artifact_Dir/test.json
-          cat GHA_Artifact_Dir/test.json
-          echo "Donot upload this file" > GHA_Artifact_Dir/secret_dont_upload.txt
+        run: echo "This is a demo file for Github Actions Artifact upload" > GHA_Artifact_Dir/test.json
+      - name: Verify the file
+        run: cat GHA_Artifact_Dir/test.json
+      - name: Verify the file
+        run:  echo "Donot upload this file" > GHA_Artifact_Dir/secret_dont_upload.txt
       - name: Upload the file to Github Repo as Artifact
         uses: actions/upload-artifact@v4
         with: 
